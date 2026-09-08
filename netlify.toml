@@ -1,0 +1,17 @@
+# Configuración de Netlify — sitio 100% estático, SIN paso de build.
+
+[build]
+  # Publicamos la carpeta tal cual. Si subes el repo con la carpeta
+  # "portfolio/" en la raíz, cambia publish a "portfolio".
+  publish = "."
+  command = ""
+
+# Cabeceras de seguridad básicas (opcional pero recomendable).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
