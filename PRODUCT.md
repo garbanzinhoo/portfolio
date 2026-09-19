@@ -97,9 +97,15 @@ there, not imply an ongoing job.
 
 ## Evidence on Hand
 
-- Projects to show, real and live, both built and deployed by Aitor, and
-  **both built entirely with AI (vibe coding)** — Aitor wants this stated
-  explicitly on the site, not implied (2026-09-18):
+- Projects to show, real and live, both built and deployed by Aitor, both
+  built with AI as a development tool (confirmed by Aitor, 2026-09-19: frame
+  it as "ideado, dirigido, desplegado y refinado por mí con IA como
+  herramienta", never "vibe coding" — that phrasing reads to recruiters as
+  "didn't understand what he built"). Real screenshots taken live
+  (`assets/preview-aizlo.png`, `assets/preview-chunkiflunki.png`) and real,
+  verified technical facts used in each project's case-study copy (checked
+  in-browser, not invented): aizlo embeds 11 real client sites as iframes;
+  Chunkiflunki's mini-games are separate pages sharing one `shared.js`.
   - aizlo — https://aizlo.netlify.app/ — his own showcase: a marketplace-style
     display of browsable example sites by sector, bundling real client sites as
     "puestos" (stalls). Featured project.

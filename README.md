@@ -45,13 +45,20 @@ nuevo portfolio/
 
 ### Proyectos (`content.js` → `PROJECT_TICKETS`)
 
-Cada ticket va en la columna `backlog`, `doing` o `done`:
+Cada ticket va en la columna `backlog`, `doing` o `done`. Los de `doing`/
+`backlog` son simples (título + `desc_es`/`desc_en` + tags). Los de `done`
+son proyectos reales ya enviados y llevan el tratamiento completo de
+case-study — captura, objetivo, qué construiste y un reto técnico concreto:
 
 ```js
 {
   id: "AITOR-12",
   title_es: "Nombre", title_en: "Name",
-  desc_es: "1–2 frases.", desc_en: "1-2 sentences.",
+  image: "assets/preview-nombre.png",        // captura real, no una maqueta
+  imageAlt_es: "...", imageAlt_en: "...",
+  problem_es: "¿Qué problema resolvía esto?", problem_en: "...",
+  built_es: "¿Qué construiste tú, con qué criterio?", built_en: "...",
+  challenge_es: "Un reto técnico concreto y real.", challenge_en: "...",
   tags: ["HTML", "CSS"],
   demoUrl: "https://proyecto.netlify.app", // null si no hay demo navegable
   codeUrl: null,                            // URL del repo si es público
@@ -59,9 +66,22 @@ Cada ticket va en la columna `backlog`, `doing` o `done`:
 }
 ```
 
+Para conseguir la captura: abre el proyecto real y haz una captura de
+pantalla genuina (no un mockup) — así se hicieron `preview-aizlo.png` y
+`preview-chunkiflunki.png`. El reto técnico debe ser algo que de verdad
+implementaste, verificable en el propio sitio — no una anécdota inventada
+para sonar bien.
+
 El botón "Ver demo" solo aparece si `demoUrl` tiene una URL real; igual para
 "Ver código" con `codeUrl`. La columna `done` es la única con permiso para
 llevar el badge "live".
+
+### Stack usado en producción (`content.js` → `PRODUCTION_TECH`)
+
+Array plano de nombres de tecnología que sí has usado en proyectos reales
+desplegados. Se muestra como una fila destacada encima del desglose completo
+DAW/ASIX, para que lo probado en producción no se pierda entre lo que aún
+estás aprendiendo.
 
 ### Stack (`content.js` → `DAW_SKILL_GROUPS` / `ASIX_SKILL_GROUPS`)
 

@@ -361,6 +361,7 @@ a { color: inherit; }
 .copy-btn.is-copied { color: var(--state-done-ink); border-color: var(--state-done); }
 
 .tabbar {
+  position: relative;
   border-bottom: 1px solid var(--line);
   overflow-x: auto;
   scrollbar-width: none;
@@ -514,9 +515,16 @@ a { color: inherit; }
   margin-top: 1.4rem;
 }
 
+.ticket__intro {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: var(--measure);
+  margin: 0 0 2rem;
+}
+
 .ticket__fields {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.75rem;
   margin: 0;
 }
 
@@ -616,6 +624,19 @@ a.timeline__role:hover { text-decoration: underline; }
 }
 .labels-subtitle--spaced { margin-top: 3rem; }
 
+.tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.tech-row .tag {
+  font-size: 0.85rem;
+  padding: 0.4em 0.8em;
+  border-color: var(--state-done);
+  color: var(--state-done-ink);
+}
+
 .labels-board {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -685,7 +706,7 @@ a.timeline__role:hover { text-decoration: underline; }
   background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
-  padding: 1.25rem 1.35rem;
+  overflow: hidden;
   box-shadow: var(--shadow-card);
   transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
 }
@@ -698,6 +719,32 @@ a.timeline__role:hover { text-decoration: underline; }
   border-color: var(--accent);
   box-shadow: var(--shadow-lift);
 }
+
+.card__preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  background: var(--board-bg-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.card__body {
+  padding: 1.25rem 1.35rem;
+}
+
+.card__meta-field { margin-bottom: 0.9rem; }
+.card__meta-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+  margin-bottom: 0.3rem;
+}
+.card__meta-field .card__desc { margin-bottom: 0; }
 
 .card__head {
   display: flex;
@@ -826,6 +873,8 @@ a.timeline__role:hover { text-decoration: underline; }
   text-decoration: none;
 }
 .watchers__links a:hover { text-decoration: underline; }
+.watchers__links a { display: inline-flex; align-items: center; gap: 0.3em; }
+.ext-icon { flex: none; opacity: 0.75; }
 
 /* ---------- Status bar footer ---------- */
 
@@ -862,6 +911,18 @@ a.timeline__role:hover { text-decoration: underline; }
 @media (max-width: 900px) {
   .board { grid-template-columns: 1fr; }
   .labels-board { grid-template-columns: 1fr 1fr; }
+
+  /* Signals the tab row scrolls horizontally — narrow viewports overflow it */
+  .tabbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 28px;
+    background: linear-gradient(to right, transparent, var(--board-bg));
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 640px) {

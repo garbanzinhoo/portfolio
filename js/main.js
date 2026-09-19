@@ -60,11 +60,37 @@
     renderLabelGroups(ASIX_SKILL_GROUPS, document.getElementById("labelsBoardAsix"));
   }
 
+  function renderProductionTech() {
+    var root = document.getElementById("productionTech");
+    if (!root) return;
+    PRODUCTION_TECH.forEach(function (name) {
+      var tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = name;
+      root.appendChild(tag);
+    });
+  }
+
   /* ---------- Render: project tickets (board) ---------- */
 
   function buildTicketCard(ticket) {
     var card = document.createElement("article");
-    card.className = "card" + (ticket.featured ? " card--featured" : "");
+    card.className = "card" + (ticket.featured ? " card--featured" : "") + (ticket.image ? " card--case-study" : "");
+
+    if (ticket.image) {
+      var preview = document.createElement("img");
+      preview.className = "card__preview";
+      preview.src = ticket.image;
+      preview.loading = "lazy";
+      preview.width = 640;
+      preview.height = 400;
+      preview.alt = ticket.imageAlt_es || "";
+      if (ticket.imageAlt_en) preview.setAttribute("data-en-alt", ticket.imageAlt_en);
+      card.appendChild(preview);
+    }
+
+    var body = document.createElement("div");
+    body.className = "card__body";
 
     var head = document.createElement("div");
     head.className = "card__head";
@@ -87,19 +113,44 @@
       head.appendChild(live);
     }
 
-    card.appendChild(head);
+    body.appendChild(head);
 
     var title = document.createElement("h4");
     title.className = "card__title";
     title.textContent = ticket.title_es;
     title.setAttribute("data-en", ticket.title_en);
-    card.appendChild(title);
+    body.appendChild(title);
 
-    var desc = document.createElement("p");
-    desc.className = "card__desc";
-    desc.textContent = ticket.desc_es;
-    desc.setAttribute("data-en", ticket.desc_en);
-    card.appendChild(desc);
+    if (ticket.problem_es) {
+      [
+        ["Objetivo", "Goal", ticket.problem_es, ticket.problem_en],
+        ["Qué construí", "What I built", ticket.built_es, ticket.built_en],
+        ["Reto técnico", "Technical challenge", ticket.challenge_es, ticket.challenge_en],
+      ].forEach(function (row) {
+        var field = document.createElement("div");
+        field.className = "card__meta-field";
+
+        var label = document.createElement("span");
+        label.className = "card__meta-label";
+        label.textContent = row[0];
+        label.setAttribute("data-en", row[1]);
+        field.appendChild(label);
+
+        var value = document.createElement("p");
+        value.className = "card__desc";
+        value.textContent = row[2];
+        value.setAttribute("data-en", row[3]);
+        field.appendChild(value);
+
+        body.appendChild(field);
+      });
+    } else if (ticket.desc_es) {
+      var desc = document.createElement("p");
+      desc.className = "card__desc";
+      desc.textContent = ticket.desc_es;
+      desc.setAttribute("data-en", ticket.desc_en);
+      body.appendChild(desc);
+    }
 
     if (ticket.tags && ticket.tags.length) {
       var tags = document.createElement("div");
@@ -110,7 +161,7 @@
         tag.textContent = t;
         tags.appendChild(tag);
       });
-      card.appendChild(tags);
+      body.appendChild(tags);
     }
 
     if (ticket.demoUrl || ticket.codeUrl) {
@@ -136,9 +187,10 @@
         code.setAttribute("data-en", "View code →");
         links.appendChild(code);
       }
-      card.appendChild(links);
+      body.appendChild(links);
     }
 
+    card.appendChild(body);
     return card;
   }
 
@@ -162,6 +214,11 @@
         el.dataset.es = el.textContent;
       }
       el.textContent = lang === "en" ? el.getAttribute("data-en") : el.dataset.es;
+    });
+
+    document.querySelectorAll("[data-en-alt]").forEach(function (el) {
+      if (!el.dataset.esAlt) el.dataset.esAlt = el.alt;
+      el.alt = lang === "en" ? el.getAttribute("data-en-alt") : el.dataset.esAlt;
     });
 
     document.querySelectorAll(".lang-switch__opt").forEach(function (opt) {
@@ -499,6 +556,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     renderLabels();
+    renderProductionTech();
     renderProjects();
     initLanguage();
     initScrollSpy();

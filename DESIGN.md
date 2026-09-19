@@ -50,8 +50,25 @@ Chosen to avoid the overused-face list (Inter as a body voice, Space
 Grotesk/Mono, IBM Plex, Fraunces/Playfair-family) the `impeccable detect`
 scan and the skill's own calibration both flag.
 
+## Section order
+
+Inicio → Proyectos (board) → Stack → Sobre mí → Contacto. Proof-of-work
+comes right after the hero, before the personal narrative — a 2026-09-19
+review pushed this: recruiters were hitting a wall of biographical text
+before reaching anything that demonstrates skill.
+
 ## Components
 
+- **`.card--case-study`** (the `done` project cards, aizlo/Chunkiflunki) —
+  `.card__preview` (a real screenshot, `object-fit: cover`, bleeds to the
+  card's rounded top corners via `overflow: hidden` on `.card`) then
+  `.card__body` with three labelled `.card__meta-field`s (Objetivo / Qué
+  construí / Reto técnico) before the usual tags and links. `doing`/`backlog`
+  tickets keep the older plain `.card__desc` — they're not shipped work, so
+  they don't earn the full case-study treatment.
+- **`.tech-row`** — a flat row of `.tag`s (no groups, no levels) for
+  technologies actually used in shipped projects, shown above the full
+  DAW/ASIX breakdown in Stack so "proven in production" outranks "studied."
 - **`.timeline`** — a compact chronological list (accent dot + bold role +
   mono date + description), reused for three different things: Formación,
   Experiencia (both static content in `index.html`), and live GitHub

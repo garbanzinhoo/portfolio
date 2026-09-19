@@ -92,15 +92,26 @@ const LEVEL_LABEL = {
   backlog: { es: "Aprendiendo", en: "Learning" },
 };
 
+// Tecnologías ya probadas en proyectos reales en producción — se muestran
+// primero y destacadas en el stack, separadas de lo que aún estoy aprendiendo.
+const PRODUCTION_TECH = ["HTML5", "CSS3", "JavaScript", "Git", "Netlify"];
+
 const PROJECT_TICKETS = {
   done: [
     {
       id: "AITOR-10",
       title_es: "aizlo",
       title_en: "aizlo",
-      desc_es: "Mi propio escaparate: un marketplace de sitios de ejemplo por sector, con demos propias y los proyectos reales de clientes embebidos como \"puestos\". Construido íntegramente con IA (vibe coding).",
-      desc_en: "My own showcase: a marketplace-style display of example sites by sector, bundling real client projects in as \"stalls\". Built entirely with AI (vibe coding).",
-      tags: ["HTML", "CSS", "JavaScript", "Netlify", "IA · Vibe coding"],
+      image: "assets/preview-aizlo.png",
+      imageAlt_es: "Captura de la portada de aizlo, con el directorio de sectores",
+      imageAlt_en: "Screenshot of aizlo's homepage, with the sector directory",
+      problem_es: "Mis primeros proyectos de cliente (gimnasio, gestoría, clínica...) vivían dispersos en URLs sueltas, sin nada que los conectara ni demostrara que eran obra de la misma persona.",
+      problem_en: "My first client projects (a gym, an accounting firm, a clinic...) lived scattered across separate URLs, with nothing connecting them or showing they were built by the same person.",
+      built_es: "Ideé, dirigí, desplegué y refiné yo mismo todo el marketplace, con IA como herramienta de desarrollo, no como autopiloto: la estructura por sectores, el sistema de \"puestos\" y la lógica que embebe cada sitio de cliente son decisiones mías.",
+      built_en: "I conceived, directed, deployed and refined the whole marketplace myself, with AI as a development tool, not an autopilot: the sector structure, the \"stall\" system, and the logic that embeds each client site are my own decisions.",
+      challenge_es: "El reto fue embeber 11 webs de cliente completas, cada una con su propio CSS y JS, como iframes dentro de un mismo marketplace, sin que ninguna rompiera el layout ni interfiriera con las demás.",
+      challenge_en: "The challenge was embedding 11 complete client sites, each with its own CSS and JS, as iframes inside one marketplace, without any of them breaking the layout or interfering with each other.",
+      tags: ["HTML5", "CSS3", "JavaScript", "Netlify", "IA · herramienta de desarrollo"],
       demoUrl: "https://aizlo.netlify.app/",
       codeUrl: null,
       featured: true,
@@ -109,9 +120,16 @@ const PROJECT_TICKETS = {
       id: "AITOR-11",
       title_es: "Chunkiflunki",
       title_en: "Chunkiflunki",
-      desc_es: "Hub de minijuegos de fiesta pensado para jugar en grupo desde el móvil. Construido íntegramente con IA (vibe coding).",
-      desc_en: "A hub of party mini-games, built to play in a group straight from the phone. Built entirely with AI (vibe coding).",
-      tags: ["HTML", "CSS", "JavaScript", "IA · Vibe coding"],
+      image: "assets/preview-chunkiflunki.png",
+      imageAlt_es: "Captura del hub de minijuegos de Chunkiflunki",
+      imageAlt_en: "Screenshot of the Chunkiflunki mini-games hub",
+      problem_es: "En una fiesta, decidir a qué jugar y explicar las reglas quita tiempo de jugar. Quería algo que un grupo abriera desde el móvil y empezara a jugar en segundos.",
+      problem_en: "At a party, deciding what to play and explaining the rules eats into actual playing time. I wanted something a group could open on a phone and start playing within seconds.",
+      built_es: "Ideé, dirigí, desplegué y refiné yo mismo el hub, con IA como herramienta de desarrollo: cada minijuego es su propia página, pero comparten un script común (shared.js) para mantener una experiencia consistente entre todos.",
+      built_en: "I conceived, directed, deployed and refined the hub myself, with AI as a development tool: each mini-game is its own page, but they share one common script (shared.js) to keep a consistent experience across all of them.",
+      challenge_es: "Mantener el estado y la interfaz coherentes entre varios minijuegos independientes que comparten lógica común, sin usar ningún framework.",
+      challenge_en: "Keeping state and UI consistent across several independent mini-games that share common logic, without using any framework.",
+      tags: ["HTML5", "CSS3", "JavaScript", "IA · herramienta de desarrollo"],
       demoUrl: "https://chunkiflunki.netlify.app/",
       codeUrl: null,
       featured: false,
