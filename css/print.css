@@ -1,0 +1,76 @@
+/* =========================================================
+   Impresión — fuerza la paleta clara pase lo que pase en pantalla
+   (tema del sistema u override manual vía el selector de tema),
+   oculta lo no accionable en papel, y muestra las URLs reales.
+   ========================================================= */
+
+@media print {
+  /* Gana a :root[data-theme="dark"] / [data-theme="light"] por especificidad
+     idéntica + orden de cascada: siempre se resuelve en claro al imprimir. */
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --board-bg: #FFFFFF;
+    --board-bg-soft: #F5F3EE;
+    --card-bg: #FFFFFF;
+    --line: #CCCCCC;
+    --line-soft: #DDDDDD;
+
+    --ink: #111111;
+    --ink-soft: #333333;
+    --ink-faint: #555555;
+
+    --accent: #2A34C4;
+    --accent-solid-bg: #2A34C4;
+
+    --state-backlog-ink: #444444;
+    --state-doing-ink: #7A4E00;
+    --state-done-ink: #146B41;
+
+    --shadow-card: none;
+    --shadow-card-hover: none;
+    --shadow-lift: none;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body { background: #fff; }
+
+  /* Chrome que no significa nada en papel */
+  .topbar,
+  .tabbar,
+  .statusbar,
+  .skip-link,
+  .hero__actions,
+  .form,
+  .ticket--activity .pill {
+    display: none !important;
+  }
+
+  a { color: var(--accent) !important; text-decoration: underline; }
+
+  /* Muestra la URL real detrás de los enlaces externos */
+  .card__link[href^="http"]::after,
+  .watchers__links a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7em;
+    color: #555;
+  }
+
+  .ticket,
+  .card {
+    border: 1px solid var(--line) !important;
+    break-inside: avoid;
+  }
+
+  .board { display: block !important; }
+  .board__col { margin-bottom: 1.25rem; }
+
+  .section { padding: 1.25rem 0 !important; }
+  .hero { padding: 1.5rem 0 !important; }
+}
