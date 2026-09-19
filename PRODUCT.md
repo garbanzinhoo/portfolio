@@ -108,8 +108,11 @@ there, not imply an ongoing job.
   site.
 - No testimonials, client quotes, metrics, ratings, awards, or press exist — must
   not be invented.
-- No custom domain confirmed yet; a `*.netlify.app` subdomain is assumed until told
-  otherwise.
+- **Live at https://portfolioaitorzoilo.netlify.app** (deployed 2026-09-19,
+  replacing the old portfolio that previously lived at that same Netlify
+  site/URL, per Aitor's explicit choice to keep the memorable URL). Source
+  at https://github.com/garbanzinhoo/portfolio (force-pushed over the old
+  portfolio repo, same reasoning). No custom domain beyond that.
 
 ## Product Principles
 

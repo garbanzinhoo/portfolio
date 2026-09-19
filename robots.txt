@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: PEGA_AQUI_TU_DOMINIO/sitemap.xml
+Sitemap: https://portfolioaitorzoilo.netlify.app/sitemap.xml
