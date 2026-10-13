@@ -941,3 +941,16 @@ a.timeline__role:hover { text-decoration: underline; }
   .hero__inner { padding: 0 1.1rem; }
   .statusbar { flex-direction: column; gap: 0.5rem; }
 }
+
+/* Estilos que antes iban escritos en 404.html (atributos style). */
+.e-404-1 { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.e-404-2 { text-align: left; }
+.e-404-3 { color: var(--ink-soft); max-width: 60ch; }
+.e-404-4 { font-style: normal; margin-top: 0.75rem; }
+.e-404-5 { margin-top: 2rem; }
+
+/* Estilos que antes iban escritos en gracias.html (atributos style). */
+.e-gracias-1 { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.e-gracias-2 { text-align: left; }
+.e-gracias-3 { color: var(--ink-soft); max-width: 60ch; }
+.e-gracias-4 { margin-top: 2rem; }
