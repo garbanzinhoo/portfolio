@@ -723,6 +723,7 @@ a.timeline__role:hover { text-decoration: underline; }
 .card__preview {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top;
